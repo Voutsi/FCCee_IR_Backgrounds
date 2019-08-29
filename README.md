@@ -25,9 +25,42 @@ and the following 2 sets of configuration parameters:
 It is recommended to run the FCCee Z accelerator together with the FCCee_Z parameters, while the other 3 accelerators can be run with the FCCee_Top parameters.
 
 To run GP you should type the following:
+
 YOUR_INSTALL_DIR/bin/guinea $ACC #PAR output
+
 e.g.
+
 YOUR_INSTALL_DIR/bin/guinea FCCee_Z FCCee_Z output
-output it is the produced log file, and it can be given any name. Below we will try to explain the main GP configuration parameters.
+
+output it is the produced log file, and it can be given any name. Below we will try to explain the main GP configuration parameters. Each GP run corresponds to 1 bunch crossing.
 
 #### GP configuration parmeters
+
+### Generating large amount of data with GP
+
+One can use the script at:
+
+https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/eepairs/sub_gp_pairs.sh
+
+that sends a user defined number of bunch crossings to be generated in parallel in Condor. You should modify accordingly the following parts of the script:
+
+
+```shell
+nruns=100
+```
+defines the number of bunch crossings to be generated
+
+```shell
+ROOTDIR=/afs/cern.ch/user/v/voutsina/Work/FCCeeBKG_WrapUp/eepairs
+```
+This variable defines the directory where the results will be stored. The script will generate there a new directory, data${i} for the ith generated bunch crossing.
+
+Command
+```shell
+sed -i -e 's/rndm_seed=1/rndm_seed='${nn}'/g' acc.dat
+```
+Changes the random seed for the ith bunch crossing according to the pattern
+```shell
+    nn=${i}*8
+```
+Feel free to modify the pattern, but have in mind that if you run N BXs with the same seed, you will generate N times the same data.
