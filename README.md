@@ -9,4 +9,4 @@ https://gitlab.cern.ch/clic-software/guinea-pig
 
 You will find an installation guide at the above site.
 
-### Generating e<sup>-<sup> e<sup>+<sup> pairs# FCCee_IR_Backgrounds
+### Generating e<sup>-</sup> e<sup>+</sup> pairs# FCCee_IR_Backgrounds
