@@ -26,6 +26,37 @@ charge_sign=-1;
 angle_x=-0.015;
 }
 
+$ACCELERATOR::FCCee_W
+{
+energy=80.0;
+particles=15;
+beta_x=200;
+beta_y=1;
+offset_x=0.;
+offset_y=0.;
+sigma_x=13000.;
+sigma_y=41.;
+sigma_z=6000.;
+charge_sign=-1;
+angle_x=-0.015;
+}
+
+
+$ACCELERATOR::FCCee_ZH
+{
+energy=120.0;
+particles=18;
+beta_x=300;
+beta_y=1.0;
+offset_x=0.;
+offset_y=0.;
+sigma_x=13700.;
+sigma_y=36.;
+sigma_z=5300.;
+charge_sign=-1;
+angle_x=-0.015;
+}
+
 
 $PARAMETERS:: FCCee_Z
 {
