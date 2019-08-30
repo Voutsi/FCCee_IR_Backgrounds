@@ -64,3 +64,15 @@ Changes the random seed for the ith bunch crossing according to the pattern
     nn=${i}*8
 ```
 Feel free to modify the pattern, but have in mind that if you run N BXs with the same seed, you will generate N times the same data.
+
+In the following line
+```shell
+/afs/cern.ch/user/v/voutsina/Work/testarea/CodeTest/GP++/guinea-pig.r3238/src/guinea FCCee_Top FCCee_Top output
+```
+you should replace the path where your guinea executable is located, the desired accelerator and configuration-parameters names and the desired output file name.
+
+The queueing in Condor is defined by the following line
+```shell
++JobFlavour = "tomorrow"
+```
+For the set of parameters FCCee_Z, featuring an estimating running time of few hours, a job flavour "workday" is recommended. For the  set of parameters FCCee_Top, job flavour "longlunch" should be enough.
