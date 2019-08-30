@@ -1,7 +1,17 @@
 # FCCee_IR_Backgrounds
 Tools and documentation to study FCCee interaction region backgrounds
+[TOC]
+## Using Guinea-Pig to generate interaction region backgrounds
+### Generating e<sup>-</sup> e<sup>+</sup> pairs 
+#### GP configuration parmeters
+### Generating large amount of data with GP
+###GP production of \gamma\gamma hadrons
+
+
+
 
 ## Using Guinea-Pig to generate interaction region backgrounds
+
 
 Guinea-Pig software can be downloaded from:
 
@@ -76,3 +86,6 @@ The queueing in Condor is defined by the following line
 +JobFlavour = "tomorrow"
 ```
 For the set of parameters FCCee_Z, featuring an estimating running time of few hours, a job flavour "workday" is recommended. For the  set of parameters FCCee_Top, job flavour "longlunch" should be enough.
+
+
+###GP production of \gamma\gamma hadrons
