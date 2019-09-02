@@ -1,10 +1,14 @@
 # FCCee_IR_Backgrounds
 Tools and documentation to study FCCee interaction region backgrounds
-[TOC]
+# Table of contents
 [Using Guinea-Pig to generate interaction region backgrounds] (#GP)
+
 [Generating e<sup>-</sup> e<sup>+</sup> pairs] (#pairs)
+
 [GP configuration parameters] (#pars)
+
 [Generating large amount of data with GP] (#data)
+
 [GP production of \gamma\gamma hadrons]  (#hadrons)
 
 
