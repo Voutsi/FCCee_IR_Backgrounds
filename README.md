@@ -13,8 +13,8 @@ Tools and documentation to study FCCee interaction region backgrounds
 
 
 
-<a name="GP"></a>
-## Using Guinea-Pig to generate interaction region backgrounds
+
+## Using Guinea-Pig to generate interaction region backgrounds <a name="GP"></a>
 
 
 Guinea-Pig software can be downloaded from:
@@ -23,8 +23,8 @@ https://gitlab.cern.ch/clic-software/guinea-pig
 
 You will find an installation guide at the above site.
 
-<a name="pairs"></a>
-### Generating e<sup>-</sup> e<sup>+</sup> pairs 
+
+### Generating e<sup>-</sup> e<sup>+</sup> pairs <a name="pairs"></a>
 
 In order to run Guinea-Pig (hereafter GP) and generate e<sup>-</sup> e<sup>+</sup> pair background, one should provide the relevant accelerator (beam) parameters, plus some steering parameters to run the software. Those parameters are set in the file acc.dat.
 Currently, one can find the four following accelerators, where the beam parameters correspond to the values considered for FCC CDR (2019).
