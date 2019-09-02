@@ -1,15 +1,15 @@
 # FCCee_IR_Backgrounds
 Tools and documentation to study FCCee interaction region backgrounds
 [TOC]
-## Using Guinea-Pig to generate interaction region backgrounds
-### Generating e<sup>-</sup> e<sup>+</sup> pairs 
-#### GP configuration parmeters
-### Generating large amount of data with GP
-###GP production of \gamma\gamma hadrons
+[Using Guinea-Pig to generate interaction region backgrounds] (#GP)
+[Generating e<sup>-</sup> e<sup>+</sup> pairs] (#pairs)
+[GP configuration parameters] (#pars)
+[Generating large amount of data with GP] (#data)
+[GP production of \gamma\gamma hadrons]  (#hadrons)
 
 
 
-
+<a name="GP"></a>
 ## Using Guinea-Pig to generate interaction region backgrounds
 
 
@@ -19,6 +19,7 @@ https://gitlab.cern.ch/clic-software/guinea-pig
 
 You will find an installation guide at the above site.
 
+<a name="pairs"></a>
 ### Generating e<sup>-</sup> e<sup>+</sup> pairs 
 
 In order to run Guinea-Pig (hereafter GP) and generate e<sup>-</sup> e<sup>+</sup> pair background, one should provide the relevant accelerator (beam) parameters, plus some steering parameters to run the software. Those parameters are set in the file acc.dat.
@@ -44,8 +45,10 @@ YOUR_INSTALL_DIR/bin/guinea FCCee_Z FCCee_Z output
 
 output it is the produced log file, and it can be given any name. Below we will try to explain the main GP configuration parameters. Each GP run corresponds to 1 bunch crossing.
 
-#### GP configuration parmeters
+<a name="pars"></a>
+#### GP configuration parameters
 
+<a name="data"></a>
 ### Generating large amount of data with GP
 
 One can use the script at:
@@ -87,5 +90,5 @@ The queueing in Condor is defined by the following line
 ```
 For the set of parameters FCCee_Z, featuring an estimating running time of few hours, a job flavour "workday" is recommended. For the  set of parameters FCCee_Top, job flavour "longlunch" should be enough.
 
-
+<a name="hadrons"></a>
 ###GP production of \gamma\gamma hadrons

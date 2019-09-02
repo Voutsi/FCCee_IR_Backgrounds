@@ -12,15 +12,15 @@ do
     cd $ROOTDIR/data${i}
     #echo directory
     #echo $ROOTDIR
-    nn=${i}*8
+    nn=${i}*100000
     echo $nn
 
     cp $ROOTDIR/acc.dat .
-    sed -i -e 's/rndm_seed=1/rndm_seed='${nn}'/g' acc.dat
+    sed -i -e 's/rndm_seed=100000/rndm_seed='${nn}'/g' acc.dat
 
     cat > test_sub.sh << EOF1
 #!/bin/sh
-cp acc.dat .
+cp $ROOTDIR/data${i}/acc.dat .
 /afs/cern.ch/user/v/voutsina/Work/testarea/CodeTest/GP++/guinea-pig.r3238/src/guinea FCCee_Top FCCee_Top output
 mv pairs.dat $ROOTDIR/data${i}
 mv pairs0.dat $ROOTDIR/data${i}
