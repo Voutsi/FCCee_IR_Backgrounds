@@ -78,7 +78,7 @@ sed -i -e 's/rndm_seed=1/rndm_seed='${nn}'/g' acc.dat
 ```
 Changes the random seed for the ith bunch crossing according to the pattern
 ```shell
-    nn=${i}*8
+    nn=${i}*100000
 ```
 Feel free to modify the pattern, but have in mind that if you run N BXs with the same seed, you will generate N times the same data.
 
