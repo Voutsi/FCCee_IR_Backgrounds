@@ -94,6 +94,17 @@ The queueing in Condor is defined by the following line
 ```
 For the set of parameters FCCee_Z, featuring an estimating running time of few hours, a job flavour "workday" is recommended. For the  set of parameters FCCee_Top, job flavour "longlunch" should be enough.
 
+#### Analysing the data (only for ILCSOFT users)
+
+Marlin processors used to analyse the simulated data. They were used for CDR results.
+In order to compile them: please initialise ILCSoft environment first.
+
+```shell
+mkdir build; cd build
+cmake -C $ILCSOFT/ILCSoft.cmake ..
+make install
+```
+
 <a name="hadrons"></a>
 ### GP production of \gamma\gamma hadrons
 
