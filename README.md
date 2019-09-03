@@ -96,3 +96,22 @@ For the set of parameters FCCee_Z, featuring an estimating running time of few h
 
 <a name="hadrons"></a>
 ###GP production of \gamma\gamma hadrons
+
+In order to produce \gamma\gamma to hadrons with GP, we need to add the following commands inside the configuration file acc.dat
+
+```shell
+hadron_ratio=100000;
+do_hadrons=3;
+store_hadrons=1;
+```
+while switching off pair production:
+```shell
+do_pairs= 0;
+```
+
+"do_hadrons = 3;" will make GP to produce a hadron.dat file, which contains the produced partons, with the same cross-section parametrisation as Pythia does. "hadron_ratio=100000;" is the weight factor with which the cross section of the
+hadronic interaction is scaled. As a second step, we invoke Pythia to do the fragmentation. To do so, we use the "hades" library from Daniel Schulte, which allows to feed the GuineaPig's output to Pythia. Finally we translate the Pythia's output to .HEPEvt style events. To perform the last 2 steps, we can use the tar file at
+
+https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/ggToHadrons/hadron.tar.gz
+
+This file was made by Dominik Arominski, and contains the HADES library. Please unpack it and follow the instructions given in the README file.
