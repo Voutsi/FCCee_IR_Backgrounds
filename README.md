@@ -115,6 +115,29 @@ The queueing in Condor is defined by the following line
 ```
 For the set of parameters FCCee_Z, featuring an estimating running time of few hours, a job flavour "workday" is recommended. For the  set of parameters FCCee_Top, job flavour "longlunch" should be enough.
 
+#### Running full simulation (only for ILCSOFT users)
+
+Here we describe how to run the full simulation (DD4Hep), using ddsim. First we need to convert the GP generated data (pairs.dat) to a format appropiate for ddsim (.hepevt). For that we use the python script
+https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/eepairs/pairsToHepevt.py
+The usage is the following:
+```shell
+python pairsToHepevt.py --file <pairs.dat> --angle <<15>>
+```
+The argument "--angle 15" applies the Lorentz boost due to the crossing angle. The value is half the crossing angle in mrad.
+Alternatively, one can apply the Lorentz boost during simulation. The two ways are equivalent, but please keep in mind to apply the boost only once!
+
+In order to convert many GP generated file, the user can run the script
+https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/eepairs/pairsGP_hepevt_serial.sh
+It will parse the directories created by sub_gp_pairs.sh during the previous, convert the pairs.dat files to .hepevt (optionally apply the boost), and copy the .hepevt file to the same directory the corresponding .dat file resides. This script is serial. The pairsToHepevt.py is very fast, and if the user wants to convert up to few hundred files, there is not need to go for parallel processing.
+
+Then the user can run the full simulation by running the script
+https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/eepairs/sub_pairs_sim.sh
+
+This script will also parse the same directory structure, use the .hepevt file as input, run the simulation, and copy the .slcio file to the same directory where the corresponding .hepevt file resides. So in principle, the user can run the generation, conversion to hepevt format and full simulation almost out of the box. Things needed to be edited/paid attention to are:
+- item Setting the environment variables ROOTDIR and COMPACTFILE to point to the desired directory path where the user wants to store the data and to the path where the detector model compact file is
+- item modify the following argument in sub_pairs_sim.sh: ```shell source /afs/cern.ch/work/v/voutsina/guineapig++/guinea-pig.r3238/data/PairsZ/BeamParTest/Pairs/Geometry/init_ilcsoft.sh ``` to point to the location of the initialisation script of the desired ILCSoft version
+- item and to pay attention to apply the boost once: currently it is applied during simulation
+
 #### Analysing the data (only for ILCSOFT users)
 
 Marlin processors used to analyse the simulated data. They were used for CDR results.
