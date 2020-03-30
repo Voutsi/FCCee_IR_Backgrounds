@@ -39,6 +39,27 @@ and the following 2 sets of configuration parameters:
 
 It is recommended to run the FCCee Z accelerator together with the FCCee_Z parameters, while the other 3 accelerators can be run with the FCCee_Top parameters.
 
+#### Discussion on Guinea-Pig parameters
+
+GP slices the bunches longitudinally (along Z) and divides the transverse space around the bunches into cells. The macroparticles are tracked inside this grid, where GP calculates the EM fields inside each cell. The finer the segmentation the more accurate the results, but obviously the running time can increase dramatically. Studies of the beam-beam effects on the luminosity measurements (together with other beam-beam related studies) showed that for optimal results the interaction region diamond should be segmented in 2 slices (cells) in longitudinal (transverse) direction. Such a segmentation leads to ~1 week of running time for the Z working point. Clearly this is too long, and as we will see, such segmentation is not needed for background studies. Below we will point GP parameter configurations that produce reliable results in a reasonable amount of time.
+
+The table shows the results for pairs obtained at Top working point, for grids of different granularities. nz is the number of slices, while nx and ny are the number of cells in transverse direction.
+
+nz | nx | ny | pairs | Etot (TeV) | time (min)
+--- | --- | --- | ---| --- | --- 
+30 | 64 | 64 | 5324 | 5.4 | < 1
+60 | 64 | 64 | 5498 | 5.0 | < 1.5
+90 | 64 | 64 | 5564 | 5.4 | ~1.5
+120 | 64 | 64 | 5398 | 5.7 | ~3
+120 | 128 | 128 | 5660 | 5.6 | ~6
+240 | 256 | 256 | 5580 | 6.0 | ~100
+
+We see that a granularity finer by a factor of 128 (which comes together with an increase in running time ~100) doesn't bring a significant change to the results. In fact, it looks like they are independent of granularity (at lease for the range of values shown in the table). However, we need to keep in mind that the results for the pairs fluctuate from bunch crossing to bunch crossing (due to the different seed of GP). The size of the fluctuations is shown in figure below:
+
+![alt text]( https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/GP_seed_study.png "Fluctuations at # of pairs and total energy for different GP seeds at Top working point")
+
+#### Running Guinea-Pig
+
 To run GP you should type the following:
 
 YOUR_INSTALL_DIR/bin/guinea $ACC #PAR output
