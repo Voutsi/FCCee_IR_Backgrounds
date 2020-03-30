@@ -135,7 +135,11 @@ https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/eepairs/sub_pairs_sim
 
 This script will also parse the same directory structure, use the .hepevt file as input, run the simulation, and copy the .slcio file to the same directory where the corresponding .hepevt file resides. So in principle, the user can run the generation, conversion to hepevt format and full simulation almost out of the box. Things needed to be edited/paid attention to are:
 - item Setting the environment variables ROOTDIR and COMPACTFILE to point to the desired directory path where the user wants to store the data and to the path where the detector model compact file is
-- item modify the following argument in sub_pairs_sim.sh: ```shell source /afs/cern.ch/work/v/voutsina/guineapig++/guinea-pig.r3238/data/PairsZ/BeamParTest/Pairs/Geometry/init_ilcsoft.sh ``` to point to the location of the initialisation script of the desired ILCSoft version
+- item modify the following argument in sub_pairs_sim.sh: 
+```shell 
+source /afs/cern.ch/work/v/voutsina/guineapig++/guinea-pig.r3238/data/PairsZ/BeamParTest/Pairs/Geometry/init_ilcsoft.sh 
+``` 
+to point to the location of the initialisation script of the desired ILCSoft version
 - item and to pay attention to apply the boost once: currently it is applied during simulation
 
 #### Analysing the data (only for ILCSOFT users)
