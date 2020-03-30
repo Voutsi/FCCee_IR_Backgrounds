@@ -56,6 +56,8 @@ nz | nx | ny | pairs | Etot (TeV) | time (min)
 
 We see that a granularity finer by a factor of 128 (which comes together with an increase in running time ~100) doesn't bring a significant change to the results. In fact, it looks like they are independent of granularity (at lease for the range of values shown in the table). However, we need to keep in mind that the results for the pairs fluctuate from bunch crossing to bunch crossing (due to the different seed of GP). The size of the fluctuations is shown in figure below:
 
+![alt text]( https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/GP_seed_study.png "Fluctuations at # of pairs and total energy for different GP seeds at Top working point")
+
 #### Running Guinea-Pig
 
 To run GP you should type the following:
