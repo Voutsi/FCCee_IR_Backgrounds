@@ -12,9 +12,7 @@
   </execute>
  
   <global>
-    <parameter name="LCIOInputFiles">
-      INPUTFILE.slcio
-    </parameter>
+    <parameter name="LCIOInputFiles"> INPUTFILE.slcio </parameter>
 
     <parameter name="MaxRecordNumber" value="0" />
     <parameter name="SkipNEvents" value="0" />

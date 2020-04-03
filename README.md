@@ -153,6 +153,38 @@ cmake -C $ILCSOFT/ILCSoft.cmake ..
 make install
 ```
 
+This will create a library for HitAnalysis processor, that should be then added to MARLIN_DLL variable:
+```shell
+export MARLIN_DLL=/path_to_the_library/HitAnalysis.so:$MARLIN_DLL
+```
+
+In the subdirectory steering is provided an initial simple Marlin steering file. It takes as input the simulated file(s) of lcio format created with ddsim in the previos steps
+
+```shell
+<parameter name="LCIOInputFiles"> INPUTFILE.slcio </parameter>
+```
+
+The user can put the path of multiple files. 
+
+```shell
+    <parameter name="MaxRecordNumber" value="0" />
+```
+means that the script will run over all events in the files. Alternatively the user can set the desired number of events. Also it should be ensured that the geometry file set at:
+```shell
+    <parameter name="DD4hepXMLFile" type="string"> COMPACTFILE.xml  </parameter>
+```
+under the InitDD4hep processor it is exactly the same as the one used for full simulation. This steering file contains the minimal number of Marlin processors in order to analyse a full simulated file of LCIO format and produce an output root file having a tree that holds some useful variables for background analysis. E.g, in this tree one can find:
+- item simX, simY, simZ showing the positions of the bkg hits
+- item Secondary: if true, the hit comes from a secondary particle, produced via the interaction of the pairs with the detector material
+- item vtxX, vtxY, vtxZ showing the vertex of the particle that created the hit
+- item simPDG it gives the PDG code of the particle that made the hit
+- item hitTime: the time that the hit was created
+- item hitNrg: the energy deposited at the hit
+- item SubDet, Layer: giving the subdetector and the layer that the hit is located
+
+along with some other variables and plots, out of which quite interesting is the gNoOfHits histogram that shows the average number of hits per subdetector. To run this steering file the user should first source the ILCSOFT (and add the path of the library to MARLIN_DLL) and then simply "Marlin steer_marlin.xml".
+
+
 <a name="hadrons"></a>
 ### GP production of \gamma\gamma hadrons
 
