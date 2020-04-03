@@ -34,8 +34,8 @@ Currently, one can find the four following accelerators, where the beam paramete
 * FCCee Top working point (Ecm = 365 GeV): FCCee_Top
 
 and the following 2 sets of configuration parameters:
-- item FCCee_Z
-- item FCCee_Top
+* FCCee_Z
+* FCCee_Top
 
 It is recommended to run the FCCee Z accelerator together with the FCCee_Z parameters, while the other 3 accelerators can be run with the FCCee_Top parameters.
 
@@ -134,13 +134,13 @@ Then the user can run the full simulation by running the script
 https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/eepairs/sub_pairs_sim.sh
 
 This script will also parse the same directory structure, use the .hepevt file as input, run the simulation, and copy the .slcio file to the same directory where the corresponding .hepevt file resides. So in principle, the user can run the generation, conversion to hepevt format and full simulation almost out of the box. Things needed to be edited/paid attention to are:
-- item Setting the environment variables ROOTDIR and COMPACTFILE to point to the desired directory path where the user wants to store the data and to the path where the detector model compact file is
-- item modify the following argument in sub_pairs_sim.sh: 
+* Setting the environment variables ROOTDIR and COMPACTFILE to point to the desired directory path where the user wants to store the data and to the path where the detector model compact file is
+* Modify the following argument in sub_pairs_sim.sh: 
 ```shell 
 source /afs/cern.ch/work/v/voutsina/guineapig++/guinea-pig.r3238/data/PairsZ/BeamParTest/Pairs/Geometry/init_ilcsoft.sh 
 ``` 
 to point to the location of the initialisation script of the desired ILCSoft version
-- item and to pay attention to apply the boost once: currently it is applied during simulation
+* and to pay attention to apply the boost once: currently it is applied during simulation
 
 #### Analysing the data (only for ILCSOFT users)
 
@@ -174,13 +174,13 @@ means that the script will run over all events in the files. Alternatively the u
     <parameter name="DD4hepXMLFile" type="string"> COMPACTFILE.xml  </parameter>
 ```
 under the InitDD4hep processor it is exactly the same as the one used for full simulation. This steering file contains the minimal number of Marlin processors in order to analyse a full simulated file of LCIO format and produce an output root file having a tree that holds some useful variables for background analysis. E.g, in this tree one can find:
-- item simX, simY, simZ showing the positions of the bkg hits
-- item Secondary: if true, the hit comes from a secondary particle, produced via the interaction of the pairs with the detector material
-- item vtxX, vtxY, vtxZ showing the vertex of the particle that created the hit
-- item simPDG it gives the PDG code of the particle that made the hit
-- item hitTime: the time that the hit was created
-- item hitNrg: the energy deposited at the hit
-- item SubDet, Layer: giving the subdetector and the layer that the hit is located
+* simX, simY, simZ showing the positions of the bkg hits
+* Secondary: if true, the hit comes from a secondary particle, produced via the interaction of the pairs with the detector material
+* vtxX, vtxY, vtxZ showing the vertex of the particle that created the hit
+* simPDG it gives the PDG code of the particle that made the hit
+* hitTime: the time that the hit was created
+* hitNrg: the energy deposited at the hit
+* SubDet, Layer: giving the subdetector and the layer that the hit is located
 
 along with some other variables and plots, out of which quite interesting is the gNoOfHits histogram that shows the average number of hits per subdetector. To run this steering file the user should first source the ILCSOFT (and add the path of the library to MARLIN_DLL) and then simply "Marlin steer_marlin.xml".
 
