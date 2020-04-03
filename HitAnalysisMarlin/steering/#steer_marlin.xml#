@@ -1,0 +1,72 @@
+<marlin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ilcsoft.desy.de/marlin/marlin.xsd">
+  <execute>
+
+    
+    <processor name="MyAIDAProcessor" />
+    <processor name="InitDD4hep" />
+    <processor name="MyHitAnalysis"/>
+
+    <!--processor name="MyLCIOOutputProcessor" /-->
+
+
+  </execute>
+ 
+  <global>
+    <parameter name="LCIOInputFiles"> INPUTFILE.slcio </parameter>
+
+    <parameter name="MaxRecordNumber" value="0" />
+    <parameter name="SkipNEvents" value="0" />
+    <parameter name="SupressCheck" value="false" />  
+    <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT">MESSAGE</parameter>
+    <parameter name="RandomSeed" value="1234567890" />
+  </global>
+
+  <processor name="MyAIDAProcessor" type="AIDAProcessor">
+    
+    <parameter name="Compress" type="int" value="1" />
+    <parameter name="FileName" type="string" value="output_root_file"/>
+    <parameter name="FileType" type="string" value="root " />
+  </processor>
+
+  
+  <processor name="InitDD4hep" type="InitializeDD4hep">
+
+    <parameter name="EncodingStringParameter"> GlobalTrackerReadoutID </parameter>           
+    <parameter name="DD4hepXMLFile" type="string"> COMPACTFILE.xml  </parameter>    
+    <parameter name="Verbosity" type="string"> WARNING </parameter>
+    
+  </processor>
+
+
+  <processor name="MyHitAnalysis" type="HitAnalysis">
+
+    <!--Name of the VTX barrel SimTrackerHit collection-->
+  <parameter name="VTXBarrelCollectionName" type="string" lcioInType="SimTrackerHit"> VertexBarrelCollection </parameter>
+  <!--Name of the VTX endcaps SimTrackerHit collection-->
+  <parameter name="VTXEndcapCollectionName" type="string" lcioInType="SimTrackerHit"> VertexEndcapCollection </parameter>
+  <!--Name of the inner tracker barrel SimTrackerHit collection-->
+  <parameter name="InnerTrackerBarrelCollectionName" type="string" lcioInType="SimTrackerHit"> InnerTrackerBarrelCollection </parameter>
+  <!--Name of the inner tracker endcaps SimTrackerHit collection-->
+  <parameter name="InnerTrackerEndcapCollectionName" type="string" lcioInType="SimTrackerHit"> InnerTrackerEndcapCollection </parameter>
+  <!--Name of the outer tracker barrel SimTrackerHit collection-->
+  <parameter name="OuterTrackerBarrelCollectionName" type="string" lcioInType="SimTrackerHit"> OuterTrackerBarrelCollection </parameter>
+  <!--Name of the outer tracker endcaps SimTrackerHit collection-->
+  <parameter name="OuterTrackerEndcapCollectionName" type="string" lcioInType="SimTrackerHit"> OuterTrackerEndcapCollection </parameter>
+  <!--Name of the inner tracker endcaps SimTrackerHit collection-->
+  <parameter name="StudiedTracks" type="string" lcioInType="Track"> SiTracks  </parameter>
+  <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
+  <parameter name="Verbosity" type="string"> MESSAGE </parameter>
+
+  </processor>
+
+
+  <processor name="MyLCIOOutputProcessor" type="LCIOOutputProcessor">
+    
+    <parameter name="LCIOOutputFile" type="string"> OUTPUT_LCIO_FILE.slcio </parameter>
+    <parameter name="LCIOWriteMode" type="string" value="WRITE_NEW" />
+    <parameter name="Verbosity" type="string">WARNING </parameter>
+  </processor>
+
+
+  
+</marlin>
