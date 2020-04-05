@@ -56,7 +56,24 @@ nz | nx | ny | pairs | Etot (TeV) | time (min)
 
 We see that a granularity finer by a factor of 128 (which comes together with an increase in running time ~100) doesn't bring a significant change to the results. In fact, it looks like they are independent of granularity (at lease for the range of values shown in the table). However, we need to keep in mind that the results for the pairs fluctuate from bunch crossing to bunch crossing (due to the different seed of GP). The size of the fluctuations is shown in figure below:
 
-![alt text]( https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/GP_seed_study.png "Fluctuations at # of pairs and total energy for different GP seeds at Top working point")
+![alt text]( https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/doc/GP_seed_study.png "Fluctuations at # of pairs and total energy for different GP seeds at Top working point")
+
+##### Z parameters
+
+The size of the interaction region diamond is ~0.3mm, which means that the longitudinal slices should be smaller than that. The shape of the bunch is very elongated, thus the rather large envelope at X and Y directions. The table below shows the values for some indicative results for pairs wrt various gp parameters scenarios. The presented results are averaged over 200BXs and the uncertainty corresponds to the systematic uncertainty due to the random seed.
+
+cut_z | cut_x | cut_y | nz | nx | ny | grids | pairs | Etot (GeV) | Missed | time (min) | Scenario
+--- | --- | --- | ---| --- | --- | --- | --- | --- | --- | --- | ---
+3 | 150 | 60 | 61 | 1600 | 640 | 7 | 1460±4.3 | 499.6±9.5 | 0.04 | < 200 | 1
+2 | 150 | 60 | 61 | 1600 | 640 | 1 | 1524±4.2 | 541.8±6.9 | 0.004 | > 45 | 2
+2 | 150 | 60 | 61 | 800 | 320 | 1 | 1514±4.8 | 537.1±8.3 | <0.004 | > 7 | 3
+2 | 150 | 60 | 128 | 320 | 320 | 1 | 1541±5.3 | 569.3±8.7 | 0.003 | ~35 | 4
+2 | 150 | 60 | 256 | 320 | 320 | 1 | 1533±6.5 | 572.3±11.1 | 0.003 | ~ 200 | 5
+
+and the graph depicts the pairs and the total energy versus the scenario:
+
+![alt text]( https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/doc/Z_GP_par_scan.png "Results for various scenaria")
+
 
 #### Running Guinea-Pig
 
