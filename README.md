@@ -60,7 +60,7 @@ We see that a granularity finer by a factor of 128 (which comes together with an
 
 ##### Z parameters
 
-The size of the interaction region diamond is ~0.3mm, which means that the longitudinal slices should be smaller than that. The shape of the bunch is very elongated, thus the rather large envelope at X and Y directions. The table below shows the values for some indicative results for pairs wrt various gp parameters scenarios. The presented results are averaged over 200BXs and the uncertainty corresponds to the systematic uncertainty due to the random seed.
+The shape of the bunch is very elongated, thus the rather large envelope at X and Y directions. The size of the interaction region diamond along x, y, z is respectively ~0.12mm, ~20nm and ~0.3mm. The slices/cells should be smaller than that. Taking into account the size of the envelope and of the interaction region diamond, 160 cells along X and 340 along Y(meaning the IR diamond is segmented to 10 cells) sound reasonble. Along Z, with an envelope twice larger than the bunch length (cut_z=2), 320 slices means a segmentation to 2 cells, while 640 to 4. These numbers will scale by a factor of 0.66 if we chose cut_z=3. The table below shows the values for some indicative results for pairs wrt various gp parameters scenarios. The presented results are averaged over 200BXs and the uncertainty corresponds to the systematic uncertainty due to the random seed.
 
 cut_z | cut_x | cut_y | nz | nx | ny | grids | pairs | Etot (GeV) | Missed | time (min) | Scenario
 --- | --- | --- | ---| --- | --- | --- | --- | --- | --- | --- | ---
