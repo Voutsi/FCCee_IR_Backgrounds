@@ -58,6 +58,12 @@ We see that a granularity finer by a factor of 128 (which comes together with an
 
 ![alt text]( https://github.com/Voutsi/FCCee_IR_Backgrounds/blob/master/doc/GP_seed_study.png "Fluctuations at # of pairs and total energy for different GP seeds at Top working point")
 
+Thud, in order to understand better the numerical stability of the code, we will run a large number (200) of GP simulation for each parameter configuration and will compare the mean values.
+
+##### Top parameters
+
+The size of the interaction region diamond along x, y, z is respectively 0.04mm, 50nm, 1.1mm. With an envelope of cutx = 6xσ_{x}, cuty = 10xσ_{x} and cutz = 3xσ_{x} a reasonable slicing would be: 75-150 slices along z, 60-120 along x and 125-250 along y.
+
 ##### Z parameters
 
 The shape of the bunch is very elongated, thus the rather large envelope at X and Y directions. The size of the interaction region diamond along x, y, z is respectively ~0.12mm, ~20nm and ~0.3mm. The slices/cells should be smaller than that. Taking into account the size of the envelope and of the interaction region diamond, 160 cells along X and 340 along Y(meaning the IR diamond is segmented to 10 cells) sound reasonble. Along Z, with an envelope twice larger than the bunch length (cut_z=2), 320 slices means a segmentation to 2 cells, while 640 to 4. These numbers will scale by a factor of 0.66 if we chose cut_z=3. The table below shows the values for some indicative results for pairs wrt various gp parameters scenarios. The presented results are averaged over 200BXs and the uncertainty corresponds to the systematic uncertainty due to the random seed.
