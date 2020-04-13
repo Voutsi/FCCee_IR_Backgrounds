@@ -62,7 +62,7 @@ Thud, in order to understand better the numerical stability of the code, we will
 
 ##### Top parameters
 
-The size of the interaction region diamond along x, y, z is respectively 0.04mm, 50nm, 1.1mm. With an envelope of cutx = 6xσ_{x}, cuty = 10xσ_{x} and cutz = 3xσ_{x} a reasonable slicing would be: 75-150 slices along z, 60-120 along x and 125-250 along y.
+The size of the interaction region diamond along x, y, z is respectively 0.04mm, 50nm, 1.1mm. With an envelope of cutx = 6xσ_{x}, cuty = 10xσ<sub>y</sub> and cutz = 3xσ_{z} a reasonable slicing would be: 75-150 slices along z, 60-120 along x and 125-250 along y.
 
 ##### Z parameters
 
