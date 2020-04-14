@@ -62,18 +62,20 @@ Thud, in order to understand better the numerical stability of the code, we will
 
 ##### Top parameters
 
-The size of the interaction region diamond along x, y, z is respectively 0.04mm, 50nm, 1.1mm. With an envelope of cutx = 6xσ<sub>x</sub>, cuty = 10xσ<sub>y</sub> and cutz = 3xσ<sub>z</sub> a reasonable slicing would be: 75-150 slices along z, 60-120 along x and 125-250 along y.
+The size of the interaction region diamond along x, y, z is respectively 0.04mm, 50nm, 1.1mm. With an envelope of cutx = 6xσ<sub>x</sub>, cuty = 10xσ<sub>y</sub> and cutz = 3xσ<sub>z</sub> a reasonable slicing would be: 75-150 slices along z, 60-120 along x and 125-250 along y. In the table below are stated (per bunch crossing): the overall number of particles produced and their total energy, the amount of particles having P<sub>T<\sub> and θ enough to reach the VXD innermost layer, the 'missed' particles (fraction of particles that at some point go outside the grid - should be <<1) and the running time. The number of particles reaching the VXD gives a first feeling about the effect expected at the detector.
 
 cut_z | cut_x | cut_y | nz | nx | ny | grids | pairs | Etot (GeV) | Reaching VXD | Missed | time (min) | Scenario
 --- | --- | --- | ---| --- | --- | --- | --- | --- | --- | --- | --- | ---
-3 | 6 | 10 | 75 | 60 | 125 | 7 | 5436±6 | 5689±50 | 20287 | ~0.008 | ~2 | 1
-2 | 6 | 10 | 50 | 60 | 125 | 7 | 5465±10 | 5659±56 | 20529 | ~0.006 | <2 | 2
-2 | 6 | 10 | 50 | 60 | 125 | 1 | 5466±8 | 5630±51 | 40797 | ~0.006 | ~1 | 3
+3 | 6 | 10 | 75 | 60 | 125 | 7 | 5436±6 | 5689±50 | 101.5 | ~0.008 | ~2 | 1
+2 | 6 | 10 | 50 | 60 | 125 | 7 | 5465±10 | 5659±56 | 102.6 | ~0.006 | <2 | 2
+2 | 6 | 10 | 50 | 60 | 125 | 1 | 5466±8 | 5630±51 | 204.0 | ~0.006 | ~1 | 3
 2 | 6 | 10 | 100 | 120 | 250 | 7 | 5471±10 | 5691±68 |  | ~0.009 | ~10 | 4
-2 | 6 | 10 | 200 | 120 | 250 | 7 | 5478±9 | 5602±54 | 21112 | ~0.01 | ~30 | 5
-3 | 6 | 10 | 150 | 120 | 250 | 7 | 5475±10 | 5783±51 | 21094 | <0.01 | ~25 | 6
-3 | 6 | 10 | 150 | 120 | 250 | 1 | 5488±8 | 5623±48 | 41582 | <0.01 | ~5 | 7
-3 | 6 | 10 | 300 | 120 | 250 | 7 | 5503±8 | 5694±48 | 21328 | ~0.01 | >60 | 8
+2 | 6 | 10 | 200 | 120 | 250 | 7 | 5478±9 | 5602±54 | 105.6 | ~0.01 | ~30 | 5
+3 | 6 | 10 | 150 | 120 | 250 | 7 | 5475±10 | 5783±51 | 105.5 | <0.01 | ~25 | 6
+3 | 6 | 10 | 150 | 120 | 250 | 1 | 5488±8 | 5623±48 | 207.9 | <0.01 | ~5 | 7
+3 | 6 | 10 | 300 | 120 | 250 | 7 | 5503±8 | 5694±48 | 106.6 | ~0.01 | >60 | 8
+
+Scenario 1 gives the results with the reasonable parameters stated above. The running time scales quadratically with the slices. In order to decrease the running time without affecting the slicing, one can decrease the envelope size from 3xσ<sub>z</sub> to 2xσ<sub>z</sub> and simultaneously decrease the slicing by a factor of 1/3. This is explored in scenario 2. There is a gain in running time and not significant change in the results for the pairs. The only significant change appears in the fraction of particles travelling outside the grid; the fraction is smaller for smaller grid. This might sound counter intuitive. The explanation is that the amplitude of the β* oscillations increases as we move further from the IP. Another way to improve the time performance is to set grids=1, which means that the area where the particles are tracked is decreased to the actual area of the envelope as defined by the cut_z, cut_x, cut_y. This change will not affect the number of produced pairs or their energy, but it will increase by a factor of 2 the amount of pairs reaching the detector which obviously will have dramatic effect on the simulation results. The reason for this is depicted in the figure below; the produced produced pairs will feel the charge of the opposite bunch for relativaly long distances. If we restrict the tracking area, we will underestimate the focussing effect of the opposite bunch. Therefore is highly recommended to run the pair production with grids=7. The effect of number of grids in time performance and the amount of particles reaching the detector is obvious when comparing the scenarios 2 with 3 and 6 with 7. The rest of scenarios examine the effect of higher segmentation. The effect is non significant. acc.dat file found in this repository is configured according to scenario 1.
 
 ##### Z parameters
 
