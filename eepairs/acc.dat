@@ -119,7 +119,7 @@ rndm_seed=100000;
 load_events=0;
 }
 
-$PARAMETERS:: FCCeeWW
+$PARAMETERS:: FCCee_WW
 {
 n_x=64 ;
 n_y=256 ;
