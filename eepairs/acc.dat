@@ -45,6 +45,22 @@ f_rep=1;
 angle_x=-0.015;
 charge_sign=-1;}
 
+$ACCELERATOR:: FCCee_ZH
+{energy=120;
+particles=18.0;
+beta_x=300;
+beta_y=1.0;
+sigma_z=5300;
+dist_z.1=0;dist_z.2=0;
+sigma_x=13700;
+sigma_y=36;
+offset_x=0.0;
+offset_y=0.0;
+n_b=1;
+f_rep=1;
+angle_x=0.015;
+charge_sign=-1;}
+
 
 $PARAMETERS::FCCee_Top
 {
@@ -127,6 +143,43 @@ n_z=256 ;
 n_t=10 ;
 cut_x=25*sigma_x.1;
 cut_y=36*sigma_y.1;
+cut_z=3.0*sigma_z.1 ;
+n_m= 50000;
+electron_ratio=1;
+do_eloss = 1 ;
+store_beam=0 ;
+electron_ratio=1. ;
+do_photons=1 ;
+photon_ratio=1. ;
+store_photons=1 ;
+do_pairs= 1;
+track_pairs=1;  
+store_pairs=2;
+hadron_ratio=100000;
+do_hadrons=0;
+store_hadrons=0;
+grids=7 ;
+beam_size = 1;
+pair_q2 = 2 ;
+pair_ratio = 1.;   
+do_lumi=0 ;
+num_lumi=200000 ;   
+lumi_p=1e-28;
+do_bhabhas=0;
+bhabha_scal=5*1e-29;
+bhabha_ecmload=91.2;
+rndm_seed=100000;
+load_events=0;
+}
+
+$PARAMETERS:: FCCee_ZH
+{
+n_x=96 ;
+n_y=256 ;
+n_z=300 ;
+n_t=1 ;
+cut_x=20*sigma_x.1;
+cut_y=32*sigma_y.1;
 cut_z=3.0*sigma_z.1 ;
 n_m= 50000;
 electron_ratio=1;
