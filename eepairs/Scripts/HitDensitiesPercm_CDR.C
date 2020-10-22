@@ -473,28 +473,19 @@ HitDensitiesPercm_CDR(){
 	  double area = 40351.47;   
 	  hztbdens1->Fill(simZ->at(j),1./(area*nentries));    // hit density
 	  hztbdens1->GetYaxis()->SetTitleOffset(1.41);
-	  double firstBin = hztbdens1->GetBinContent(16);
-	  hztbdens1->SetBinContent(16,firstBin*1.9);
-	  double lastBin = hztbdens1->GetBinContent(35);
-	  hztbdens1->SetBinContent(35,firstBin*1.9);	  	  
+	  
 	}    
 	if (layer->at(j)==1){  
 	  hztbhits2->Fill(simZ->at(j),1.);                          
 	  double area = 127091.25 ;
 	  hztbdens2->Fill(simZ->at(j),1./(area*nentries));
-	  double firstBin = hztbdens2->GetBinContent(16);
-	  hztbdens2->SetBinContent(16,firstBin*1.9);
-	  double lastBin = hztbdens2->GetBinContent(35);
-	  hztbdens2->SetBinContent(35,firstBin*1.9);	 
+	 
 	}   
 	if (layer->at(j)==2){   
 	  hztbhits3->Fill(simZ->at(j),1.);                         
 	  double area = 212877.84;
 	  hztbdens3->Fill(simZ->at(j),1./(area*nentries));    // hit density
-	  double firstBin = hztbdens3->GetBinContent(12);
-	  hztbdens3->SetBinContent(12,firstBin*1.5);
-	  double lastBin = hztbdens3->GetBinContent(39);
-	  hztbdens3->SetBinContent(39,firstBin*1.5);	  
+
 	}    
       }   // end of studying ITB
 
@@ -540,45 +531,39 @@ HitDensitiesPercm_CDR(){
 	      hzvxdECdens1->Fill(Radius,1.0/(area*1*nentries));    // hit density
 	      hzvxdECHits1->Fill(Radius,(1.));
 	      //std::cout << " I add the hit now " << std::endl ;
-	      double firstBin = hzvxdECdens1->GetBinContent(13);
-	      hzvxdECdens1->SetBinContent(13,firstBin*1.5);	      
+	      
 	    }    
 	    if (layer->at(j)==1){                          
 	      hzvxdECdens2->Fill(Radius,1.0/(area*1*nentries));    // hit density
 	      hzvxdECHits2->Fill(Radius,(1.));
 	      //std::cout << " First set of discs: Radius " << Radius << " area " << area << std::endl ;
-	      double firstBin = hzvxdECdens2->GetBinContent(13);
-	      hzvxdECdens2->SetBinContent(13,firstBin*1.5);	      
+    
 	    }   
 	    if (layer->at(j)==2){   
 	      if (n==6){area=664.44;}                       
 	      hzvxdECdens3->Fill(Radius,1.0/(area*1*nentries));    // hit density
 	      hzvxdECHits3->Fill(Radius,(1.));
-	      double firstBin = hzvxdECdens3->GetBinContent(18);
-	      hzvxdECdens3->SetBinContent(18,firstBin*2.0);	      
+	      
 	    }    
 	    if (layer->at(j)==3){  
 	      if (n==6){area=664.44;}                               
 	      hzvxdECdens4->Fill(Radius,1.0/(area*1*nentries));    // hit density
 	      hzvxdECHits4->Fill(Radius,(1.));
-	      double firstBin = hzvxdECdens4->GetBinContent(18);
-	      hzvxdECdens4->SetBinContent(18,firstBin*2.0);	      
+	      
 	      //std::cout << "n " << n << " Hit radius " << Radius << " Second set of discs: Radius " << Radius << " area " << area << std::endl ;
 	    }   
 	    if (layer->at(j)==4){     
 	      if (n==11){area=571.77;}                              
 	      hzvxdECdens5->Fill(Radius,1.0/(area*1*nentries));    // hit density
 	      hzvxdECHits5->Fill(Radius,(1.));
-	      double firstBin = hzvxdECdens5->GetBinContent(23);
-	      hzvxdECdens5->SetBinContent(23,firstBin*2.4);	     
+	     
 	      //std::cout << "n " << n << " Hit radius " << Radius << " Third set of discs: Radius " << Radius << " area " << area << std::endl ;
 	    }    
 	    if (layer->at(j)==5){  
 	      if (n==11){area=571.77;}                                 
 	      hzvxdECdens6->Fill(Radius,1.0/(area*1*nentries));    // hit density
 	      hzvxdECHits6->Fill(Radius,(1.));
-	      double firstBin = hzvxdECdens6->GetBinContent(23);
-	      hzvxdECdens6->SetBinContent(23,firstBin*2.4);	      
+	      
 	      //std::cout << "n " << n << " Hit radius " << Radius << " Third set of discs: Radius " << Radius << " area " << area << std::endl ;
 	    }  
 	  } // end condition Radius
@@ -609,46 +594,39 @@ HitDensitiesPercm_CDR(){
 	      hitedens1->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitedens1->GetYaxis()->SetTitleOffset(1.41);
 	      hitehits1->Fill(Radius,(1.));
-	      double firstBin = hitedens1->GetBinContent(4);
-	      hitedens1->SetBinContent(4,firstBin*3.*35.184);
+
 	    }
 	    if (layer->at(j)==1){   
 	      //std::cout << " Rin " << rinn << " Rout " << r << " area = " << area << std::endl ;	      
 	      hitedens2->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits2->Fill(Radius,(1.));
-	      double firstBin = hitedens2->GetBinContent(7);
-	      hitedens2->SetBinContent(7,firstBin*1.2.*1.1);
+
 	    }
 	    if (layer->at(j)==2){  
 	      //std::cout << " Rin " << rinn << " Rout " << r << " area = " << area << std::endl ; 	      
 	      hitedens3->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits3->Fill(Radius,(1.));
-	      double firstBin = hitedens3->GetBinContent(9);
-	      hitedens3->SetBinContent(9,firstBin*1.3*1.1);
+
 	    }
 	    if (layer->at(j)==3){   	      
 	      hitedens4->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits4->Fill(Radius,(1.));
-	      double firstBin = hitedens4->GetBinContent(11);
-	      hitedens4->SetBinContent(11,firstBin*1.6*1.1);
+
 	    }
 	    if (layer->at(j)==4){   	      
 	      hitedens5->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits5->Fill(Radius,(1.));
-	      double firstBin = hitedens5->GetBinContent(13);
-	      hitedens5->SetBinContent(13,firstBin*1.9*1.1);
+
 	    }
 	    if (layer->at(j)==5){   	      
 	      hitedens6->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits6->Fill(Radius,(1.));
-	      double firstBin = hitedens6->GetBinContent(15);
-	      hitedens6->SetBinContent(15,firstBin*3.0*1.2);
+
 	    }
 	    if (layer->at(j)==6){   	      
 	      hitedens7->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits7->Fill(Radius,(1.));
-	      double firstBin = hitedens7->GetBinContent(17);
-	      hitedens7->SetBinContent(17,firstBin*2.0*1.1);
+
 	    }
 	  }   // end of radius conditional
 	}   // end of inner tracker endcap
@@ -661,26 +639,22 @@ HitDensitiesPercm_CDR(){
 	    if (layer->at(j)==0){   	      
 	      hitedens8->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits8->Fill(Radius,(1.));
-	      double firstBin = hitedens8->GetBinContent(36);
-	      hitedens8->SetBinContent(36,firstBin*10.0*1.1);
+
 	    }
 	    if (layer->at(j)==1){   	      
 	      hitedens9->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits9->Fill(Radius,(1.));
-	      double firstBin = hitedens9->GetBinContent(36);
-	      hitedens9->SetBinContent(36,firstBin*10.0*1.1);
+
 	    }
 	    if (layer->at(j)==2){   	      
 	      hitedens10->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits10->Fill(Radius,(1.));
-	      double firstBin = hitedens10->GetBinContent(36);
-	      hitedens10->SetBinContent(36,firstBin*10.0*1.1);	      
+	      
 	    }
 	    if (layer->at(j)==3){   	      
 	      hitedens11->Fill(Radius,1.0/(area*nentries));    // hit density
 	      hitehits11->Fill(Radius,(1.));
-	      double firstBin = hitedens11->GetBinContent(36);
-	      hitedens11->SetBinContent(36,firstBin*10.0*1.1);	      
+	      
 	    }
 	  } // end of radius conditional	  
 	} // end of outer tracker endcap
@@ -688,6 +662,54 @@ HitDensitiesPercm_CDR(){
     }  // end of loop in hits
   }   // end of loop in tree entries
 
+  // Corrections applied for the shape and size of the detector (CLD model from CDR)
+  double firstBin = hztbdens1->GetBinContent(16);
+  hztbdens1->SetBinContent(16,firstBin*1.9);
+  double lastBin = hztbdens1->GetBinContent(35);
+  hztbdens1->SetBinContent(35,firstBin*1.9);
+  double firstBin = hztbdens2->GetBinContent(16);
+  hztbdens2->SetBinContent(16,firstBin*1.9);
+  double lastBin = hztbdens2->GetBinContent(35);
+  hztbdens2->SetBinContent(35,firstBin*1.9);
+  double firstBin = hztbdens3->GetBinContent(12);
+  hztbdens3->SetBinContent(12,firstBin*1.5);
+  double lastBin = hztbdens3->GetBinContent(39);
+  hztbdens3->SetBinContent(39,firstBin*1.5);
+  double firstBin = hzvxdECdens1->GetBinContent(13);
+  hzvxdECdens1->SetBinContent(13,firstBin*1.5);
+  double firstBin = hzvxdECdens2->GetBinContent(13);
+  hzvxdECdens2->SetBinContent(13,firstBin*1.5);	  
+  double firstBin = hzvxdECdens3->GetBinContent(18);
+  hzvxdECdens3->SetBinContent(18,firstBin*2.0);	  
+  double firstBin = hzvxdECdens4->GetBinContent(18);
+  hzvxdECdens4->SetBinContent(18,firstBin*2.0);
+  double firstBin = hzvxdECdens5->GetBinContent(23);
+  hzvxdECdens5->SetBinContent(23,firstBin*2.4);
+  double firstBin = hzvxdECdens6->GetBinContent(23);
+  hzvxdECdens6->SetBinContent(23,firstBin*2.4);
+  double firstBin = hitedens1->GetBinContent(4);
+  hitedens1->SetBinContent(4,firstBin*3.*35.184);
+  double firstBin = hitedens2->GetBinContent(7);
+  hitedens2->SetBinContent(7,firstBin*1.2*1.1);
+  double firstBin = hitedens3->GetBinContent(9);
+  hitedens3->SetBinContent(9,firstBin*1.3*1.1);
+  double firstBin = hitedens4->GetBinContent(11);
+  hitedens4->SetBinContent(11,firstBin*1.6*1.1);	      	      double firstBin = hitedens5->GetBinContent(13);
+  hitedens5->SetBinContent(13,firstBin*1.9*1.1);
+  double firstBin = hitedens6->GetBinContent(15);
+  hitedens6->SetBinContent(15,firstBin*3.0*1.2);
+  double firstBin = hitedens7->GetBinContent(17);
+  hitedens7->SetBinContent(17,firstBin*2.0*1.1);
+  double firstBin = hitedens8->GetBinContent(36);
+  hitedens8->SetBinContent(36,firstBin*10.0*1.1);
+  double firstBin = hitedens9->GetBinContent(36);
+  hitedens9->SetBinContent(36,firstBin*10.0*1.1);
+  double firstBin = hitedens10->GetBinContent(36);
+  hitedens10->SetBinContent(36,firstBin*10.0*1.1);
+  double firstBin = hitedens11->GetBinContent(36);
+  hitedens11->SetBinContent(36,firstBin*10.0*1.1);
+
+  
   // Plotting for VXD barrel  
   cvxdb->cd();
 
