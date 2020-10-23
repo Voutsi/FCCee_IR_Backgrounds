@@ -1,4 +1,4 @@
-HitDensitiesPercm_CDR(){
+void HitDensitiesPercm_CDR(){
 
   gStyle->SetOptStat(0);
 
@@ -372,10 +372,10 @@ HitDensitiesPercm_CDR(){
 
 
 
-  TCanvas *c = new TCanvas("cvxdb","Density @ VXD barrel",800,800);
-  TCanvas *c2 = new TCanvas("ctb","Density @ Tracker barrel",800,800);
-  TCanvas *c3 = new TCanvas("cvxdec","Density @ VXD endcap",800,800);
-  TCanvas *c4 = new TCanvas("cte","Density @ Tracker endcaps",800,800);
+  TCanvas *cvxdb = new TCanvas("cvxdb","Density @ VXD barrel",800,800);
+  TCanvas *ctb = new TCanvas("ctb","Density @ Tracker barrel",800,800);
+  TCanvas *cvxdec = new TCanvas("cvxdec","Density @ VXD endcap",800,800);
+  TCanvas *cte = new TCanvas("cte","Density @ Tracker endcaps",800,800);
   TCanvas *c5 = new TCanvas("c5","Density @ Tracker barrel vs R",800,800);
   TCanvas *ctest = new TCanvas("ctest","test purposes: hits in ITE D1",800,800);
   ctest->Divide(1,2);
@@ -1293,7 +1293,6 @@ HitDensitiesPercm_CDR(){
       ErrorsTE10[bin-1] = error4/cont ;
     }
   }
-  int NBinsTE2 = hitedens10->GetNbinsX ();
   for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens10->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE10[bin2-1];
