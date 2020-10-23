@@ -2,7 +2,8 @@ HitDensitiesPercm_CDR(){
 
   gStyle->SetOptStat(0);
 
-  TFile *infile = new TFile("/afs/cern.ch/user/v/voutsina/Work/SR/Scripts/Results/Reconstruction/test.root","read");
+  //TFile *infile = new TFile("/afs/cern.ch/user/v/voutsina/Work/SR/Scripts/Results/Reconstruction/test.root","read");
+  TFile *infile = new TFile("/afs/cern.ch/user/v/voutsina/tracking/pairsZ_STD_BP.root","read");
 
   int VXDBrad[6];
   double VXDBrad_errors[6];
@@ -663,50 +664,56 @@ HitDensitiesPercm_CDR(){
   }   // end of loop in tree entries
 
   // Corrections applied for the shape and size of the detector (CLD model from CDR)
-  double firstBin = hztbdens1->GetBinContent(16);
+
+  double firstBin, lastBin = 0;
+  
+  firstBin = hztbdens1->GetBinContent(16);
+  std::cout << " first bin 1 " << firstBin << std::endl ;
   hztbdens1->SetBinContent(16,firstBin*1.9);
-  double lastBin = hztbdens1->GetBinContent(35);
+  lastBin = hztbdens1->GetBinContent(35);
   hztbdens1->SetBinContent(35,firstBin*1.9);
-  double firstBin = hztbdens2->GetBinContent(16);
+  firstBin = hztbdens2->GetBinContent(16);
+  std::cout << " first bin 2 " << firstBin << std::endl ;  
   hztbdens2->SetBinContent(16,firstBin*1.9);
-  double lastBin = hztbdens2->GetBinContent(35);
+  lastBin = hztbdens2->GetBinContent(35);
   hztbdens2->SetBinContent(35,firstBin*1.9);
-  double firstBin = hztbdens3->GetBinContent(12);
+  firstBin = hztbdens3->GetBinContent(12);
+  std::cout << " first bin 3 " << firstBin << std::endl ;
   hztbdens3->SetBinContent(12,firstBin*1.5);
-  double lastBin = hztbdens3->GetBinContent(39);
+  lastBin = hztbdens3->GetBinContent(39);
   hztbdens3->SetBinContent(39,firstBin*1.5);
-  double firstBin = hzvxdECdens1->GetBinContent(13);
+  firstBin = hzvxdECdens1->GetBinContent(13);
   hzvxdECdens1->SetBinContent(13,firstBin*1.5);
-  double firstBin = hzvxdECdens2->GetBinContent(13);
+  firstBin = hzvxdECdens2->GetBinContent(13);
   hzvxdECdens2->SetBinContent(13,firstBin*1.5);	  
-  double firstBin = hzvxdECdens3->GetBinContent(18);
+  firstBin = hzvxdECdens3->GetBinContent(18);
   hzvxdECdens3->SetBinContent(18,firstBin*2.0);	  
-  double firstBin = hzvxdECdens4->GetBinContent(18);
+  firstBin = hzvxdECdens4->GetBinContent(18);
   hzvxdECdens4->SetBinContent(18,firstBin*2.0);
-  double firstBin = hzvxdECdens5->GetBinContent(23);
+  firstBin = hzvxdECdens5->GetBinContent(23);
   hzvxdECdens5->SetBinContent(23,firstBin*2.4);
-  double firstBin = hzvxdECdens6->GetBinContent(23);
+  firstBin = hzvxdECdens6->GetBinContent(23);
   hzvxdECdens6->SetBinContent(23,firstBin*2.4);
-  double firstBin = hitedens1->GetBinContent(4);
+  firstBin = hitedens1->GetBinContent(4);
   hitedens1->SetBinContent(4,firstBin*3.*35.184);
-  double firstBin = hitedens2->GetBinContent(7);
+  firstBin = hitedens2->GetBinContent(7);
   hitedens2->SetBinContent(7,firstBin*1.2*1.1);
-  double firstBin = hitedens3->GetBinContent(9);
+  firstBin = hitedens3->GetBinContent(9);
   hitedens3->SetBinContent(9,firstBin*1.3*1.1);
-  double firstBin = hitedens4->GetBinContent(11);
-  hitedens4->SetBinContent(11,firstBin*1.6*1.1);	      	      double firstBin = hitedens5->GetBinContent(13);
+  firstBin = hitedens4->GetBinContent(11);
+  hitedens4->SetBinContent(11,firstBin*1.6*1.1);	      	      firstBin = hitedens5->GetBinContent(13);
   hitedens5->SetBinContent(13,firstBin*1.9*1.1);
-  double firstBin = hitedens6->GetBinContent(15);
+  firstBin = hitedens6->GetBinContent(15);
   hitedens6->SetBinContent(15,firstBin*3.0*1.2);
-  double firstBin = hitedens7->GetBinContent(17);
+  firstBin = hitedens7->GetBinContent(17);
   hitedens7->SetBinContent(17,firstBin*2.0*1.1);
-  double firstBin = hitedens8->GetBinContent(36);
+  firstBin = hitedens8->GetBinContent(36);
   hitedens8->SetBinContent(36,firstBin*10.0*1.1);
-  double firstBin = hitedens9->GetBinContent(36);
+  firstBin = hitedens9->GetBinContent(36);
   hitedens9->SetBinContent(36,firstBin*10.0*1.1);
-  double firstBin = hitedens10->GetBinContent(36);
+  firstBin = hitedens10->GetBinContent(36);
   hitedens10->SetBinContent(36,firstBin*10.0*1.1);
-  double firstBin = hitedens11->GetBinContent(36);
+  firstBin = hitedens11->GetBinContent(36);
   hitedens11->SetBinContent(36,firstBin*10.0*1.1);
 
   
@@ -875,16 +882,16 @@ HitDensitiesPercm_CDR(){
   ctb->cd();
   double ErrorsTBL1[50];
   for (int i = 0 ; i < 50 ; i++){ErrorsTBL1[i]=0;}  // array initialisation
-  int NBins1 = hztbhits1->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTB1 = hztbhits1->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTB1+1 ; bin++){
     double cont = hztbhits1->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTBL1[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hztbdens1->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTB2 = hztbdens1->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTB2+1 ; bin2++){
     double cont2 = hztbdens1->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTBL1[bin2-1];
     hztbdens1->SetBinError(bin2, relErr);
@@ -892,14 +899,14 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTBL2[50];
   for (int i = 0 ; i < 50 ; i++){ErrorsTBL2[i]=0;}  // array initialisation
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  for (int bin = 1 ; bin < NBinsTB1+1 ; bin++){
     double cont = hztbhits2->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTBL2[bin-1] = error4/cont ;
     }
   }
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  for (int bin2 = 1 ; bin2 < NBinsTB2+1 ; bin2++){
     double cont2 = hztbdens2->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTBL2[bin2-1];
     hztbdens2->SetBinError(bin2, relErr);
@@ -907,14 +914,14 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTBL3[50];
   for (int i = 0 ; i < 50 ; i++){ErrorsTBL3[i]=0;}  // array initialisation
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  for (int bin = 1 ; bin < NBinsTB1+1 ; bin++){
     double cont = hztbhits3->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTBL3[bin-1] = error4/cont ;
     }
   }
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  for (int bin2 = 1 ; bin2 < NBinsTB2+1 ; bin2++){
     double cont2 = hztbdens3->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTBL3[bin2-1];
     hztbdens3->SetBinError(bin2, relErr);
@@ -922,14 +929,14 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTBL4[50];
   for (int i = 0 ; i < 50 ; i++){ErrorsTBL4[i]=0;}  // array initialisation
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  for (int bin = 1 ; bin < NBinsTB1+1 ; bin++){
     double cont = hztbhits4->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTBL4[bin-1] = error4/cont ;
     }
   }
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  for (int bin2 = 1 ; bin2 < NBinsTB2+1 ; bin2++){
     double cont2 = hztbdens4->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTBL4[bin2-1];
     hztbdens4->SetBinError(bin2, relErr);
@@ -937,14 +944,14 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTBL5[50];
   for (int i = 0 ; i < 50 ; i++){ErrorsTBL5[i]=0;}  // array initialisation
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  for (int bin = 1 ; bin < NBinsTB1+1 ; bin++){
     double cont = hztbhits5->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTBL5[bin-1] = error4/cont ;
     }
   }
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  for (int bin2 = 1 ; bin2 < NBinsTB2+1 ; bin2++){
     double cont2 = hztbdens5->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTBL5[bin2-1];
     hztbdens5->SetBinError(bin2, relErr);
@@ -952,14 +959,14 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTBL6[50];
   for (int i = 0 ; i < 50 ; i++){ErrorsTBL6[i]=0;}  // array initialisation
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  for (int bin = 1 ; bin < NBinsTB1+1 ; bin++){
     double cont = hztbhits6->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTBL6[bin-1] = error4/cont ;
     }
   }
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  for (int bin2 = 1 ; bin2 < NBinsTB2+1 ; bin2++){
     double cont2 = hztbdens6->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTBL6[bin2-1];
     hztbdens6->SetBinError(bin2, relErr);
@@ -993,8 +1000,8 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsVXDE6[55];
   for (int i = 0 ; i < 55 ; i++){ErrorsVXDE6[i]=0;}  // array initialisation
-  int NBins1 = hzvxdECHits6->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsVXDEC1 = hzvxdECHits6->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsVXDEC1+1 ; bin++){
     double cont = hzvxdECHits6->GetBinContent(bin);
     double error4 = sqrt(cont);
     //std::cout << " D6 : bin " << bin << " no of hits " << cont << " poissonian error " << error4 << std::endl ;
@@ -1003,8 +1010,8 @@ HitDensitiesPercm_CDR(){
       ErrorsVXDE6[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hzvxdECdens6->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsVXDEC2 = hzvxdECdens6->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsVXDEC2+1 ; bin2++){
     double cont = hzvxdECHits6->GetBinContent(bin2);
     double error4 = sqrt(cont);
     double cont2 = hzvxdECdens6->GetBinContent(bin2);  
@@ -1016,16 +1023,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsVXDE2[55];
   for (int i = 0 ; i < 55 ; i++){ErrorsVXDE2[i]=0;}  // array initialisation
-  int NBins1 = hzvxdECHits2->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsVXDEC1 = hzvxdECHits2->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsVXDEC1+1 ; bin++){
     double cont = hzvxdECHits2->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsVXDE2[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hzvxdECdens2->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsVXDEC2 = hzvxdECdens2->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsVXDEC2+1 ; bin2++){
     double cont2 = hzvxdECdens2->GetBinContent(bin2);  
     double relErr = cont2*ErrorsVXDE2[bin2-1];
     hzvxdECdens2->SetBinError(bin2, relErr);
@@ -1033,16 +1040,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsVXDE3[55];
   for (int i = 0 ; i < 55 ; i++){ErrorsVXDE3[i]=0;}  // array initialisation
-  int NBins1 = hzvxdECHits3->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsVXDEC1 = hzvxdECHits3->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsVXDEC1+1 ; bin++){
     double cont = hzvxdECHits3->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsVXDE3[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hzvxdECdens3->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsVXDEC2 = hzvxdECdens3->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsVXDEC2+1 ; bin2++){
     double cont2 = hzvxdECdens3->GetBinContent(bin2);  
     double relErr = cont2*ErrorsVXDE3[bin2-1];
     hzvxdECdens3->SetBinError(bin2, relErr);
@@ -1051,16 +1058,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsVXDE1[55];
   for (int i = 0 ; i < 55 ; i++){ErrorsVXDE1[i]=0;}  // array initialisation
-  int NBins1 = hzvxdECHits1->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsVXDEC1 = hzvxdECHits1->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsVXDEC1+1 ; bin++){
     double cont = hzvxdECHits1->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsVXDE1[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hzvxdECdens1->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsVXDEC2 = hzvxdECdens1->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsVXDEC2+1 ; bin2++){
     double cont2 = hzvxdECdens1->GetBinContent(bin2);  
     double relErr = cont2*ErrorsVXDE1[bin2-1];
     hzvxdECdens1->SetBinError(bin2, relErr);
@@ -1068,16 +1075,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsVXDE5[55];
   for (int i = 0 ; i < 55 ; i++){ErrorsVXDE5[i]=0;}  // array initialisation
-  int NBins1 = hzvxdECHits5->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsVXDEC1 = hzvxdECHits5->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsVXDEC1+1 ; bin++){
     double cont = hzvxdECHits5->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsVXDE5[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hzvxdECdens5->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsVXDEC2 = hzvxdECdens5->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsVXDEC2+1 ; bin2++){
     double cont2 = hzvxdECdens5->GetBinContent(bin2);  
     double relErr = cont2*ErrorsVXDE5[bin2-1];
     hzvxdECdens5->SetBinError(bin2, relErr);
@@ -1086,16 +1093,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsVXDE4[55];
   for (int i = 0 ; i < 55 ; i++){ErrorsVXDE4[i]=0;}  // array initialisation
-  int NBins1 = hzvxdECHits4->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsVXDEC1 = hzvxdECHits4->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsVXDEC1+1 ; bin++){
     double cont = hzvxdECHits4->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsVXDE4[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hzvxdECdens4->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsVXDEC2 = hzvxdECdens4->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsVXDEC2+1 ; bin2++){
     double cont2 = hzvxdECdens4->GetBinContent(bin2);  
     double relErr = cont2*ErrorsVXDE4[bin2-1];
     hzvxdECdens4->SetBinError(bin2, relErr);
@@ -1135,8 +1142,8 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE6[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE6[i]=0;}  // array initialisation
-  int NBins1 = hitehits6->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits6->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits6->GetBinContent(bin);
     double error4 = sqrt(cont);
     //std::cout << " D6 : bin " << bin << " no of hits " << cont << " poissonian error " << error4 << std::endl ;
@@ -1145,8 +1152,8 @@ HitDensitiesPercm_CDR(){
       ErrorsTE6[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens6->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens6->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont = hitehits6->GetBinContent(bin2);
     double error4 = sqrt(cont);
     double cont2 = hitedens6->GetBinContent(bin2);  
@@ -1158,16 +1165,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE2[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE2[i]=0;}  // array initialisation
-  int NBins1 = hitehits2->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits2->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits2->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTE2[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens2->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens2->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens2->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE2[bin2-1];
     hitedens2->SetBinError(bin2, relErr);
@@ -1175,16 +1182,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE3[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE3[i]=0;}  // array initialisation
-  int NBins1 = hitehits3->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits3->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits3->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTE3[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens3->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens3->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens3->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE3[bin2-1];
     hitedens3->SetBinError(bin2, relErr);
@@ -1192,8 +1199,8 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE1[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE1[i]=0;}  // array initialisation
-  int NBins1 = hitehits1->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits1->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits1->GetBinContent(bin);
     //std::cout << " bin " << bin << " hits " <<  cont << std::endl ;
     double error4 = sqrt(cont);
@@ -1202,8 +1209,8 @@ HitDensitiesPercm_CDR(){
       std::cout << " index " << bin-1 << " error " <<  error4/cont << std::endl ;
     }
   }
-  int NBins2 = hitedens1->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens1->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens1->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE1[bin2-1];
     //std::cout << " D1 : bin " << bin2 << " content " << cont2  << std::endl ;
@@ -1213,16 +1220,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE5[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE5[i]=0;}  // array initialisation
-  int NBins1 = hitehits5->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits5->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits5->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTE5[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens5->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens5->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens5->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE5[bin2-1];
     hitedens5->SetBinError(bin2, relErr);
@@ -1231,16 +1238,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE4[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE4[i]=0;}  // array initialisation
-  int NBins1 = hitehits4->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits4->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits4->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTE4[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens4->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens4->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens4->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE4[bin2-1];
     hitedens4->SetBinError(bin2, relErr);
@@ -1248,8 +1255,8 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE7[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE7[i]=0;}  // array initialisation
-  int NBins1 = hitehits7->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits7->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits7->GetBinContent(bin);
     double error4 = sqrt(cont);
     //std::cout << " D6 : bin " << bin << " no of hits " << cont << " poissonian error " << error4 << std::endl ;
@@ -1258,8 +1265,8 @@ HitDensitiesPercm_CDR(){
       ErrorsTE7[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens7->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens7->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont = hitehits7->GetBinContent(bin2);
     double error4 = sqrt(cont);
     double cont2 = hitedens7->GetBinContent(bin2);  
@@ -1271,16 +1278,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE8[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE8[i]=0;}  // array initialisation
-  int NBins1 = hitehits8->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits8->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits8->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTE8[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens8->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens8->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens8->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE8[bin2-1];
     hitedens8->SetBinError(bin2, relErr);
@@ -1288,16 +1295,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE9[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE9[i]=0;}  // array initialisation
-  int NBins1 = hitehits9->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits9->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits9->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTE9[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens9->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens9->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens9->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE9[bin2-1];
     hitedens9->SetBinError(bin2, relErr);
@@ -1305,16 +1312,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE10[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE10[i]=0;}  // array initialisation
-  int NBins1 = hitehits10->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits10->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits10->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTE10[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens10->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens10->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens10->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE10[bin2-1];
     hitedens10->SetBinError(bin2, relErr);
@@ -1322,16 +1329,16 @@ HitDensitiesPercm_CDR(){
 
   double ErrorsTE11[110];
   for (int i = 0 ; i < 110 ; i++){ErrorsTE11[i]=0;}  // array initialisation
-  int NBins1 = hitehits11->GetNbinsX ();
-  for (int bin = 1 ; bin < NBins1+1 ; bin++){
+  int NBinsTE1 = hitehits11->GetNbinsX ();
+  for (int bin = 1 ; bin < NBinsTE1+1 ; bin++){
     double cont = hitehits11->GetBinContent(bin);
     double error4 = sqrt(cont);
     if (cont >  0 ){
       ErrorsTE11[bin-1] = error4/cont ;
     }
   }
-  int NBins2 = hitedens11->GetNbinsX ();
-  for (int bin2 = 1 ; bin2 < NBins2+1 ; bin2++){
+  int NBinsTE2 = hitedens11->GetNbinsX ();
+  for (int bin2 = 1 ; bin2 < NBinsTE2+1 ; bin2++){
     double cont2 = hitedens11->GetBinContent(bin2);  
     double relErr = cont2*ErrorsTE11[bin2-1];
     hitedens11->SetBinError(bin2, relErr);
