@@ -880,7 +880,7 @@ void HitAnalysis::processEvent( LCEvent * evt ) {
     
   }  // end of loop on collections
 
-  totalEnergy = EnergyCounter ;
+  //totalEnergy = EnergyCounter ;
 
   hits->Fill();
   nEvt++; 
