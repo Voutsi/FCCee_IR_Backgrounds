@@ -11,7 +11,7 @@ do
     #echo $ROOTDIR
     cd $ROOTDIR/data${i}
 
-    $ROOTDIR/pairsToHepevt.py --angle 0 --file $ROOTDIR/loop${i}/pairs.dat > $ROOTDIR/data${i}/pairs${i}.hepevt
+    $ROOTDIR/pairsToHepevt.py --angle 0 --file $ROOTDIR/data${i}/pairs.dat > $ROOTDIR/data${i}/pairs${i}.hepevt
 
     #fi
 
