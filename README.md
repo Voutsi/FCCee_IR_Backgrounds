@@ -33,11 +33,8 @@ Currently, one can find the four following accelerators, where the beam paramete
 * FCCee ZH working point (Ecm = 240 GeV): FCCee_ZH
 * FCCee Top working point (Ecm = 365 GeV): FCCee_Top
 
-and the following 2 sets of configuration parameters:
-* FCCee_Z
-* FCCee_Top
+and the corresponding 4 sets of configuration parameters for each working point.
 
-It is recommended to run the FCCee Z accelerator together with the FCCee_Z parameters, while the other 3 accelerators can be run with the FCCee_Top parameters.
 
 #### Discussion on Guinea-Pig parameters
 
