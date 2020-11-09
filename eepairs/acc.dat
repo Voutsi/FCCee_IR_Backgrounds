@@ -58,7 +58,7 @@ offset_x=0.0;
 offset_y=0.0;
 n_b=1;
 f_rep=1;
-angle_x=0.015;
+angle_x=-0.015;
 charge_sign=-1;}
 
 
